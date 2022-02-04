@@ -1,0 +1,24 @@
+---
+version: '2'
+services:
+  fluentd:
+    #image: fluent/fluentd:v1.14.3-debian-1.0 
+    image: fluent/fluentd-kubernetes-daemonset:v1.14.3-debian-elasticsearch7-1.0
+    ports:
+      - "24224:24224"
+    volumes:
+      - ./fluentd.conf:/fluentd/etc/fluent.conf
+    networks:
+      - fluent-network
+
+  fluentbit:
+    image: fluent/fluent-bit:1.8.12
+    volumes:
+      - ./fluentbit.conf:/fluent-bit/etc/fluent-bit.conf
+      - ./log.json:/app/log.json
+    networks:
+      - fluent-network
+
+networks:
+  fluent-network:
+    driver: bridge
