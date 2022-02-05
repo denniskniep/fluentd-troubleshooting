@@ -1,1 +1,1 @@
-/log
+/fluentd-out/**.log

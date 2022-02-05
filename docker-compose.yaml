@@ -2,21 +2,26 @@
 version: '2'
 services:
   fluentd:
-    #image: fluent/fluentd:v1.14.3-debian-1.0 
-    image: fluent/fluentd-kubernetes-daemonset:v1.14.3-debian-elasticsearch7-1.0
+    build:
+      context: ./fluentd
+      dockerfile: Dockerfile
     ports:
       - "24224:24224"
     volumes:
-      - ./fluentd.conf:/fluentd/etc/fluent.conf
-      - ./log/:/home/fluent/log/
+      - ./fluentd-config/:/fluentd/etc/
+      - ./fluentd-out/:/fluentd-out/
+    command: [
+      "fluentd"
+      #, "-vv"
+    ]
     networks:
       - fluent-network
 
   fluentbit:
     image: fluent/fluent-bit:1.8.12
     volumes:
-      - ./fluentbit.conf:/fluent-bit/etc/fluent-bit.conf
-      - ./log.json:/app/log.json
+      - ./fluentbit/fluentbit.conf:/fluent-bit/etc/fluent-bit.conf
+      - ./fluentbit/input-fluentbit.json:/app/input-fluentbit.json
     networks:
       - fluent-network
 
