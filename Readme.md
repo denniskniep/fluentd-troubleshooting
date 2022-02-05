@@ -74,7 +74,7 @@ echo '{"log":"{\"@timestamp\":\"2019-02-04T23:09:52.8847422960100\",\"event\":\"
 * [fluent-plugin-debug](https://github.com/sonots/fluent-plugin-debug) (Unmaintained) Fluentd plugin to investigate incoming messages in a short-hand.
 
 # Debug FluentD with VisualStudio Code
-* Follow instructions [here]()
+* Follow instructions [here](https://github.com/fluent/fluentd#development)
 * Open in VisualStudioCode
 * Install [ruby Extension](https://github.com/rubyide/vscode-ruby)
 * Add debug config by creating file `.vscode/launch.json`
