@@ -1,4 +1,6 @@
-# Troubleshooting
+# FluentD Troubleshooting
+How to troubleshoot and drill down FluentD configuration issues
+
 1. Place your configs into folder `fluentd-config`
 1. Add prints to debug the current event at specific points with: 
     ```
