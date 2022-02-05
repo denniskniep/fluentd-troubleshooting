@@ -8,6 +8,7 @@ services:
       - "24224:24224"
     volumes:
       - ./fluentd.conf:/fluentd/etc/fluent.conf
+      - ./log/:/home/fluent/log/
     networks:
       - fluent-network
 
